@@ -1,0 +1,14 @@
+.Activity {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.025);
+    border-radius: 0.5rem;
+    padding: 2rem 1rem;
+    min-width: 0;
+}
+
+.titleactivity{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+}

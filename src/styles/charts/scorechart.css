@@ -1,0 +1,10 @@
+.scorechart{
+  position: relative;
+  width: 28%;
+  aspect-ratio: 1;
+  margin-top: 2rem;
+  background: var(--lightGrey-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  min-width: 0;
+  }

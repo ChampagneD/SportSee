@@ -1,0 +1,29 @@
+.leftbar{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em 1.7em 1em;
+    font-size: 1.2rem;
+    background-color: #020203;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.icons li {
+    margin-top: 1em;
+}
+
+.copyright {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-orientation: mixed;
+    color: #fff;
+}
+
+  

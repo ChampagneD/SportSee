@@ -1,0 +1,36 @@
+.header{
+    display:flex;
+    justify-content : space-between;
+    align-items : center;
+    background: #020203;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 90px;
+    padding-left: 35px;
+    padding-right: 11rem;
+}
+.header a{
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.logo{
+    display: flex;
+    align-items: center ;
+    gap: 10px;
+}
+.logo p{
+    color: #E60000;
+    font-size: 24px;
+
+}
+
+.nav{
+    display: flex;
+}
+
+@media screen and (max-width: 1240px) {
+    .header {
+        padding-right: 3rem;
+    }
+}

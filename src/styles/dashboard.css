@@ -1,0 +1,123 @@
+
+.firstcontainer {
+    overflow: hidden;
+}
+
+.firstcontainer .username{
+    font-size: 48px;
+}
+
+.responsive-container {
+    position: relative;
+}
+
+
+.userContainer {
+    margin-top: 2rem;
+    padding-left: 8rem;
+}
+
+.container{
+    display: flex;
+    margin-bottom: 2rem;
+    padding-left: 8rem;
+}
+
+/* ----------------LEFT BAR------------------- */
+
+/* ----------------LEFT CONTAINER------------------- */
+
+.topgraph {
+    padding: calc(8px + 1.5625vw);
+    background-color: #FBFBFB;
+}
+
+.leftContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 75%;
+    margin-right: 2rem;
+}
+/* ----------------BOTTOM CONTAINER------------------- */
+.bottomContainer{
+    display: flex;
+    gap: 30px;
+}
+/* ----------------RIGHT CONTAINER------------------- */
+
+/*.card .icon{
+    width: 33%;
+}*/
+
+.card{
+    display: flex;
+    background-color: #FBFBFB;
+    align-items: center;
+    width: 280px;
+    height: 130px;
+    padding-left: 45px;
+    gap: 24px;
+}
+.info{
+    font-weight: bold ;
+    font-size : 20px ;
+    margin-bottom: 0;
+}
+.text{
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 968px) {
+    .sessionchart,
+    .chart-performance,
+    .scorechart {
+      width: 100% !important;
+    }
+  }
+
+@media screen and (max-width: 1240px) {
+
+    .userContainer {
+        padding-left: 3rem;
+      }
+  
+    .container {
+      padding-left: 3rem;
+      flex-direction: column;
+    }
+  
+    .leftContainer {
+      width: 95%;
+      margin-right: 0;
+    }
+  
+    .rightContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin-top: 2rem;
+    }
+  
+    .card {
+      display: block;
+      padding: 1%;
+      width: 22%;
+      display: flex;
+      justify-content: center;
+    align-items: center;
+    }
+  
+    .aside-keyData {
+      margin: 1rem 0 0;
+    }
+  }

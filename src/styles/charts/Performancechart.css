@@ -1,0 +1,9 @@
+.chart-performance{
+  width: 28%;
+  aspect-ratio: 1;
+  margin-top: 2rem;
+  background: var(--dark-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  min-width: 0;
+}

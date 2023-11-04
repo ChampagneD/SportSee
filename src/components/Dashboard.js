@@ -1,7 +1,7 @@
 import ActivityChart from "../components/ActivityChart";
 import SessionChart from "./SessionChart";
-import PerformanceChart from "../components/PerformanceChart";
-import ScoreChart from "../components/ScoreChart";
+import PerformanceChart from "./PerformanceChart";
+import ScoreChart from "./ScoreChart";
 import Card from "../components/Card";
 
 import "../styles/dashboard.css";

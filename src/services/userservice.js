@@ -5,18 +5,18 @@ import {
   USER_PERFORMANCE,
 } from "./mockdata";
 
-const API_ROOT = "http://localhost:3001";
+const API_ROOT = "http://localhost:3000";
 
 export const getUserAsync = (userId) => {
   try {
-    fetch(`${API_ROOT}/user/${userId}`);
+    return fetch(`${API_ROOT}/user/${userId}`);
   } catch (error) {
     console.log("getUserError: ", error);
   }
 };
 export const getUserActivityAsync = (userId) => {
   try {
-    fetch(`${API_ROOT}/user/${userId}/activity`);
+    return fetch(`${API_ROOT}/user/${userId}/activity`);
   } catch (error) {
     console.log("getUserActivityError: ", error);
   }
@@ -24,7 +24,7 @@ export const getUserActivityAsync = (userId) => {
 
 export const getUserAverageSessionsAsync = (userId) => {
   try {
-    fetch(`${API_ROOT}/user/${userId}/average-sessions`);
+    return fetch(`${API_ROOT}/user/${userId}/average-sessions`);
   } catch (error) {
     console.log("getUserAverageSessionsError: ", error);
   }
@@ -32,7 +32,7 @@ export const getUserAverageSessionsAsync = (userId) => {
 
 export const getUserPerformanceAsync = (userId) => {
   try {
-    fetch(`${API_ROOT}/user/${userId}/performance`);
+    return fetch(`${API_ROOT}/user/${userId}/performance`);
   } catch (error) {
     console.log("getUserPerformanceError: ", error);
   }

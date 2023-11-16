@@ -14,11 +14,15 @@ import { getDashboardDataAsync } from "./services/userservice";
 const router = createBrowserRouter([
   {
     path: "*",
-    loader: async () => redirect("/user/12"),
+    loader: async () => redirect("/user"),
+  },
+  {
+    path: "/user",
+    element: <App selected={false} />,
   },
   {
     path: "/user/:id",
-    element: <App />,
+    element: <App selected={true} />,
     loader: async ({ params }) => await getDashboardDataAsync(params.id),
   },
 ]);

@@ -1,8 +1,10 @@
 import ActivityChart from "../components/ActivityChart";
-import SessionChart from "./SessionChart";
-import PerformanceChart from "./PerformanceChart";
-import ScoreChart from "./ScoreChart";
+import SessionChart from "./Sessionchart";
+import PerformanceChart from "./Performancechart";
+import ScoreChart from "./Scorechart";
 import Card from "../components/Card";
+import UserSelection from "./UserSelection";
+import { Navigate } from "react-router-dom";
 
 import "../styles/dashboard.css";
 import { useLoaderData } from "react-router-dom";
@@ -12,7 +14,7 @@ import { useLoaderData } from "react-router-dom";
  * @returns {JSX} A react component to render on the dashboard page
  */
 
-const Dashboard = () => {
+const Dashboard = (selected) => {
   /*
 Fetching data from useLoaderData
 @type {{ 
@@ -23,6 +25,12 @@ Fetching data from useLoaderData
       }}
 */
   const userData = useLoaderData();
+  if (selected.selected === false) {
+    return <UserSelection />;
+  }
+  console.log(userData);
+  if (userData.user === "can not get user")
+    return <Navigate to={"/user"} replace={true} />;
   const user = userData.user.data;
   const activity = userData.activity.data;
   const average = userData.average.data;

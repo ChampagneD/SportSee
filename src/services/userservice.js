@@ -1,3 +1,4 @@
+import { async } from "q";
 import {
   USER_MAIN_DATA,
   USER_ACTIVITY,
@@ -7,32 +8,41 @@ import {
 
 const API_ROOT = "http://localhost:3000";
 
-export const getUserAsync = (userId) => {
+export const getUserAsync = async (userId) => {
   try {
-    return fetch(`${API_ROOT}/user/${userId}`);
+    const res = await fetch(`${API_ROOT}/user/${userId}`);
+    if (res.status === 404) {
+      const err = new Error(404);
+      err.status = "404";
+      throw err;
+    } 
+    return res;
   } catch (error) {
     console.log("getUserError: ", error);
+    return error;
   }
 };
-export const getUserActivityAsync = (userId) => {
+export const getUserActivityAsync = async (userId) => {
   try {
-    return fetch(`${API_ROOT}/user/${userId}/activity`);
+    const res = await fetch(`${API_ROOT}/user/${userId}/activity`);
+    if (res.status === 404) throw new Error(404)
+    return res;
   } catch (error) {
     console.log("getUserActivityError: ", error);
   }
 };
 
-export const getUserAverageSessionsAsync = (userId) => {
+export const getUserAverageSessionsAsync = async (userId) => {
   try {
-    return fetch(`${API_ROOT}/user/${userId}/average-sessions`);
+    return await fetch(`${API_ROOT}/user/${userId}/average-sessions`);
   } catch (error) {
     console.log("getUserAverageSessionsError: ", error);
   }
 };
 
-export const getUserPerformanceAsync = (userId) => {
+export const getUserPerformanceAsync = async (userId) => {
   try {
-    return fetch(`${API_ROOT}/user/${userId}/performance`);
+    return await fetch(`${API_ROOT}/user/${userId}/performance`);
   } catch (error) {
     console.log("getUserPerformanceError: ", error);
   }
@@ -51,8 +61,16 @@ export const getDashboardDataAsync = async (userId) => {
     const userAverageSessionsReq = getUserAverageSessionsAsync(userId);
     const userPerformanceReq = getUserPerformanceAsync(userId);
 
+    const User = await userReq;
+
+    if (User.status === "404") {
+      const err = new Error(404);
+      err.status = "404"
+      throw err;
+    }
+
     return {
-      user: await (await userReq).json(),
+      user: await User.json(),
       activity: await (await userActivityReq).json(),
       average: await (await userAverageSessionsReq).json(),
       performance: await (await userPerformanceReq).json(),
@@ -60,11 +78,17 @@ export const getDashboardDataAsync = async (userId) => {
   } catch (error) {
     console.log("Error: ", error);
     console.error("API down using mocked data");
+    let status;
+    if (error.status === "404") {
+      status = error.status
+    }
+
     return {
       user: USER_MAIN_DATA,
       activity: USER_ACTIVITY,
       average: USER_AVERAGE_SESSIONS,
       performance: USER_PERFORMANCE,
+      status
     };
   }
 };

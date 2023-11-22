@@ -25,8 +25,8 @@ const router = createBrowserRouter([
     element: <App selected={true} />,
     loader: async ({ params }) => {
       const res = await getDashboardDataAsync(params.id);
-      if (res.status === "404") return redirect('/user')
-      return res
+      if (res.status === "404") return redirect("/user");
+      return res;
     },
   },
 ]);

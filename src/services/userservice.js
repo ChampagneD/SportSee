@@ -15,7 +15,7 @@ export const getUserAsync = async (userId) => {
       const err = new Error(404);
       err.status = "404";
       throw err;
-    } 
+    }
     return res;
   } catch (error) {
     console.log("getUserError: ", error);
@@ -24,9 +24,7 @@ export const getUserAsync = async (userId) => {
 };
 export const getUserActivityAsync = async (userId) => {
   try {
-    const res = await fetch(`${API_ROOT}/user/${userId}/activity`);
-    if (res.status === 404) throw new Error(404)
-    return res;
+    return await fetch(`${API_ROOT}/user/${userId}/activity`);
   } catch (error) {
     console.log("getUserActivityError: ", error);
   }
@@ -65,7 +63,7 @@ export const getDashboardDataAsync = async (userId) => {
 
     if (User.status === "404") {
       const err = new Error(404);
-      err.status = "404"
+      err.status = "404";
       throw err;
     }
 
@@ -80,7 +78,7 @@ export const getDashboardDataAsync = async (userId) => {
     console.error("API down using mocked data");
     let status;
     if (error.status === "404") {
-      status = error.status
+      status = error.status;
     }
 
     return {
@@ -88,7 +86,7 @@ export const getDashboardDataAsync = async (userId) => {
       activity: USER_ACTIVITY,
       average: USER_AVERAGE_SESSIONS,
       performance: USER_PERFORMANCE,
-      status
+      status,
     };
   }
 };

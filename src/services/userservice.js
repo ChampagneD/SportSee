@@ -10,13 +10,7 @@ const API_ROOT = "http://localhost:3000";
 
 export const getUserAsync = async (userId) => {
   try {
-    const res = await fetch(`${API_ROOT}/user/${userId}`);
-    if (res.status === 404) {
-      const err = new Error(404);
-      err.status = "404";
-      throw err;
-    }
-    return res;
+    return await fetch(`${API_ROOT}/user/${userId}`);
   } catch (error) {
     console.log("getUserError: ", error);
     return error;
@@ -59,16 +53,8 @@ export const getDashboardDataAsync = async (userId) => {
     const userAverageSessionsReq = getUserAverageSessionsAsync(userId);
     const userPerformanceReq = getUserPerformanceAsync(userId);
 
-    const User = await userReq;
-
-    if (User.status === "404") {
-      const err = new Error(404);
-      err.status = "404";
-      throw err;
-    }
-
     return {
-      user: await User.json(),
+      user: await (await userReq).json(),
       activity: await (await userActivityReq).json(),
       average: await (await userAverageSessionsReq).json(),
       performance: await (await userPerformanceReq).json(),
@@ -76,17 +62,23 @@ export const getDashboardDataAsync = async (userId) => {
   } catch (error) {
     console.log("Error: ", error);
     console.error("API down using mocked data");
-    let status;
-    if (error.status === "404") {
-      status = error.status;
-    }
+
+    const user = USER_MAIN_DATA.find((obj) => obj.id === parseInt(userId));
+    const activity = USER_ACTIVITY.find(
+      (obj) => obj.userId === parseInt(userId)
+    );
+    const average = USER_AVERAGE_SESSIONS.find(
+      (obj) => obj.userId === parseInt(userId)
+    );
+    const performance = USER_PERFORMANCE.find(
+      (obj) => obj.userId === parseInt(userId)
+    );
 
     return {
-      user: USER_MAIN_DATA,
-      activity: USER_ACTIVITY,
-      average: USER_AVERAGE_SESSIONS,
-      performance: USER_PERFORMANCE,
-      status,
+      user: { data: user },
+      activity: { data: activity },
+      average: { data: average },
+      performance: { data: performance },
     };
   }
 };

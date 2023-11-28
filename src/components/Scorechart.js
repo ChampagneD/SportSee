@@ -69,8 +69,8 @@ const Scorechart = ({ data }) => {
             dataKey="value"
             innerRadius={70}
             outerRadius={85}
-            startAngle={90}
-            endAngle={450}
+            startAngle={220}
+            endAngle={40}
           >
             {score.map((entry, index) =>
               index === 0 ? (
